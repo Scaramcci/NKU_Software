@@ -1,0 +1,6 @@
+.smart-center-container {
+  padding: 24px;
+  background: linear-gradient(to bottom, #fafbfb, #f9f9f9);
+  min-height: 100vh;
+  color: #ffffff;
+}

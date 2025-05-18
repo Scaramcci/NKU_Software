@@ -1,0 +1,60 @@
+/* src/pages/MainInfo/VideoSection.css */
+
+/* 美化视频卡片样式，简化设计 */
+.video-card {
+  background: #1a2e4f; /* 统一深蓝背景 */
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* 柔和阴影 */
+  color: #ffffff; /* 白色字体 */
+}
+
+.video-title {
+  font-size: 20px; /* 调整字体大小 */
+  font-weight: 600;
+  color: #ffffff; /* 白色标题 */
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.video-tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+  gap: 10px;
+}
+
+.video-tabs button {
+  padding: 8px 16px;
+  font-size: 14px;
+  border: none;
+  border-radius: 8px;
+  background-color: #2a3f5f; /* 深蓝按钮背景 */
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.video-tabs button:hover {
+  background-color: #3a4f6f; /* 浅蓝悬停效果 */
+}
+
+.video-tabs button.active {
+  background-color: #4a5f7f; /* 激活状态 */
+  font-weight: bold;
+}
+
+.video-wrapper {
+  display: flex;
+  justify-content: center;
+  background: #0c263f; /* 深蓝背景 */
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.video-wrapper video {
+  width: 100%;
+  max-width: 720px;
+  border-radius: 8px;
+  background-color: #000e24; /* 黑色背景 */
+}

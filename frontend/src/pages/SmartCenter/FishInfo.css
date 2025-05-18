@@ -1,0 +1,74 @@
+.fish-info-card {
+  background: linear-gradient(145deg, #0d1b2a, #1b2f43);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.15);
+  color: #e0f7ff;
+  margin-bottom: 20px;
+  border: 1px solid rgba(0, 255, 255, 0.05);
+}
+
+.fish-info-title {
+  color: #00eaff;
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+  text-shadow: 0 0 10px #00f0ff;
+  margin-bottom: 24px;
+}
+
+.fish-info-box {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 12px;
+  text-align: center;
+  transition: 0.3s;
+  box-shadow: inset 0 0 6px rgba(0, 255, 255, 0.1);
+}
+
+.fish-info-box:hover {
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+}
+.fish-info-tag {
+  max-width: 90px;
+  white-space: normal;
+  word-break: break-word;
+  font-size: 12px;
+  line-height: 1.1;
+  padding: 3px 6px;
+  text-align: center;
+  display: inline-block;
+  border-radius: 8px;
+}
+
+.fish-icon {
+  font-size: 26px;
+  margin-bottom: 8px;
+  color: #00c6ff;
+}
+
+.fish-icon.red {
+  color: #ff4d4f;
+}
+
+.fish-icon.orange {
+  color: #ffa940;
+}
+
+.fish-label {
+  display: block;
+  color: #eee;
+  font-weight: bold;
+  margin-top: 8px;
+}
+
+.fish-value {
+  color: #00ffd5;
+  font-size: 18px;
+  display: block;
+  margin-top: 4px;
+}
+
+.warning {
+  background-color: rgba(255, 255, 255, 0.08);
+}

@@ -1,0 +1,82 @@
+/* src/pages/MainInfo/ControlPanel.css */
+.control-panel-container {
+  background: linear-gradient(145deg, #0a1e3a, #123252);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.15);
+  color: #fff;
+}
+
+.control-panel-title {
+  font-size: 22px;
+  font-weight: bold;
+  color: #00eaff;
+  text-shadow: 0 0 8px #00f0ff;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.control-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+}
+
+.control-card {
+  background: linear-gradient(145deg, #10324a, #1a4763);
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.control-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 16px #00cfff;
+}
+
+.control-icon {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.control-label {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.toggle-switch {
+  width: 40px;
+  height: 22px;
+  border-radius: 12px;
+  margin: 0 auto;
+  position: relative;
+  background-color: #888;
+  transition: background-color 0.3s;
+}
+
+.toggle-switch::after {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  top: 2px;
+  left: 2px;
+  background-color: white;
+  border-radius: 50%;
+  transition: left 0.3s;
+}
+
+.toggle-switch.on {
+  background-color: #00ff99;
+}
+
+.toggle-switch.on::after {
+  left: 20px;
+}
+
+.toggle-switch.off {
+  background-color: #444;
+}

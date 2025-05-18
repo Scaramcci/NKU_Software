@@ -1,0 +1,11 @@
+/* 白色标题覆盖 AntD 默认样式 */
+.statistic-white .ant-statistic-title {
+  color: #ffffff !important;
+}
+
+/* 卡片标题也白色或亮蓝色 */
+.card-title {
+  color: #00eaff;
+  font-weight: bold;
+  font-size: 16px;
+}

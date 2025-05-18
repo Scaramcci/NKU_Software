@@ -1,0 +1,17 @@
+/* src/pages/MainInfo/HistoryChart.css */
+
+.history-chart-card {
+  background: linear-gradient(135deg, #0d1f33, #193b5a);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.25);
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  color: #ffffff;
+  margin-top: 24px;
+}
+
+.history-chart-card canvas {
+  background: rgba(0, 16, 32, 0.6);
+  border-radius: 12px;
+  padding: 10px;
+}

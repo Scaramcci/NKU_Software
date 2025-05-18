@@ -1,88 +1,122 @@
 import React from 'react';
 import { Layout, Menu } from 'antd';
-import { useNavigate, Outlet } from 'react-router-dom';
+import { useNavigate, Outlet, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import {
-  DashboardOutlined,
-  ControlOutlined,
-  BarChartOutlined,
-  LogoutOutlined,
+  InfoCircleOutlined,
+  BulbOutlined,
   EnvironmentOutlined,
+  DatabaseOutlined,
+  UsergroupAddOutlined,
   UserOutlined,
-  BellOutlined
+  LogoutOutlined
 } from '@ant-design/icons';
-import { USER_ROLES } from '../../services/authService';
 
 const { Header, Sider, Content } = Layout;
 
 const MainLayout = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { user } = useSelector(state => state.auth);
-  const isFarmer = user?.role === USER_ROLES.FARMER || user?.role === USER_ROLES.ADMIN;
+  const role = user?.role || 'user'; // fallback 防止未登录
 
-  const menuItems = [
+  // 菜单配置（根据角色严格区分）
+  const rawMenuItems = [
     {
-      key: 'dashboard',
-      icon: <DashboardOutlined />,
-      label: '监控面板',
-      onClick: () => navigate('/dashboard')
-    },
-    ...(isFarmer ? [
-      {
-        key: 'farm-management',
-        icon: <EnvironmentOutlined />,
-        label: '渔场管理',
-        onClick: () => navigate('/farm/management')
-      },
-      {
-        key: 'farm-control',
-        icon: <ControlOutlined />,
-        label: '设备控制',
-        onClick: () => navigate('/farm/control')
-      },
-            {
-        key: 'farm-alarm',
-        icon: <BellOutlined />,
-        label: '预警系统',
-        onClick: () => navigate('/farm/alarm')
-      },
-    ] : []),
-    {
-      key: 'statistics',
-      icon: <BarChartOutlined />,
-      label: '数据统计',
-      onClick: () => navigate('/statistics')
+      key: '/main-info',
+      label: '主要信息',
+      icon: <InfoCircleOutlined />,
+      roles: ['user', 'farmer', 'admin']
     },
     {
-      key: 'profile',
-      icon: <UserOutlined />,
+      key: '/smart-center',
+      label: '智能中心',
+      icon: <BulbOutlined />,
+      roles: ['user', 'farmer', 'admin']
+    },
+    {
+      key: '/underwater-system',
+      label: '水下系统',
+      icon: <EnvironmentOutlined />,
+      roles: ['farmer', 'admin'] // ❌ 不含 user
+    },
+    {
+      key: '/data-center',
+      label: '数据中心',
+      icon: <DatabaseOutlined />,
+      roles: ['admin'] // ❌ 仅管理员
+    },
+    {
+      key: '/admin-user-management',
+      label: '管理员管理',
+      icon: <UsergroupAddOutlined />,
+      roles: ['admin']
+    },
+    {
+      key: '/profile',
       label: '个人中心',
-      onClick: () => navigate('/profile')
+      icon: <UserOutlined />,
+      roles: ['user', 'farmer', 'admin']
     },
     {
-      key: 'logout',
-      icon: <LogoutOutlined />,
+      key: '/logout',
       label: '退出登录',
+      icon: <LogoutOutlined />,
+      roles: ['user', 'farmer', 'admin'],
       onClick: () => {
         localStorage.removeItem('authToken');
+        localStorage.removeItem('currentUser');
         navigate('/login');
       }
     }
   ];
 
+  // 根据用户角色过滤可见菜单项
+  const menuItems = rawMenuItems
+    .filter(item => item.roles.includes(role))
+    .map(({ key, label, icon, onClick }) => ({
+      key,
+      label,
+      icon,
+      onClick: onClick || (() => navigate(key))
+    }));
+
   return (
     <Layout style={{ minHeight: '100vh' }}>
       <Sider>
-        <div style={{ height: 32, margin: 16, background: 'rgba(255, 255, 255, 0.2)' }} />
+        <div style={{
+          height: 64,
+          margin: 16,
+          color: '#fff',
+          fontSize: 20,
+          fontWeight: 'bold',
+          textAlign: 'center',
+          lineHeight: '32px'
+        }}>
+          智慧牧场系统
+        </div>
         <Menu
           theme="dark"
           mode="inline"
-          defaultSelectedKeys={['dashboard']}
+          selectedKeys={[location.pathname]}
+          onClick={({ key }) => {
+            const menuItem = menuItems.find(item => item.key === key);
+            menuItem?.onClick();
+          }}
           items={menuItems}
         />
       </Sider>
       <Layout>
-        <Header style={{ padding: 0, background: '#fff' }} />
+        <Header style={{
+          padding: '0 24px',
+          background: '#fff',
+          display: 'flex',
+          justifyContent: 'flex-end',
+          alignItems: 'center',
+          fontSize: 16
+        }}>
+          欢迎，{user?.displayName || user?.username || '用户'}（{role}）
+        </Header>
         <Content style={{ margin: '24px 16px', padding: 24, background: '#fff' }}>
           <Outlet />
         </Content>

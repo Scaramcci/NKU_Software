@@ -13,6 +13,9 @@ import DeviceControl from './pages/DeviceControl';
 import MonitoringDashboard from './components/MonitoringDashboard';
 import ProtectedRoute from './components/ProtectedRoute';
 import { USER_ROLES } from './services/authService';
+import MainInfo from './pages/MainInfo';
+import SmartCenter from './pages/SmartCenter'; 
+import UnderwaterSystem from './pages/UnderwaterSystem'; // 如果你是放在 pages/UnderwaterSystem/index.jsx
 
 // 基础私有路由，只检查是否登录
 const PrivateRoute = ({ children }) => {
@@ -44,9 +47,30 @@ function App() {
       <Route path="/login" element={<UserAuth />} />
       <Route path="/unauthorized" element={<Unauthorized />} />
       
+
+      {/* 主框架：嵌套路由 */}
       <Route path="/" element={<MainLayout />}>
-        <Route index element={<PrivateRoute><Navigate to="/dashboard" replace /></PrivateRoute>} />
-        
+      {/* 首页默认跳转 */}
+      <Route index element={<Navigate to="/main-info" replace />} />
+
+      {/* 智能中心 */}
+      <Route path="smart-center" element={
+        <PrivateRoute>
+          <SmartCenter />
+        </PrivateRoute>
+      } />
+      <Route path="/underwater-system" element={
+     <PrivateRoute>
+    <UnderwaterSystem />
+    </PrivateRoute>
+    } />
+
+        {/* 主要信息页面 */}
+        <Route path="main-info" element={
+          <PrivateRoute>
+            <MainInfo />
+          </PrivateRoute>
+        } />
         <Route path="/dashboard" element={
           <PrivateRoute>
             <MonitoringDashboard />
@@ -65,11 +89,11 @@ function App() {
           </PrivateRoute>
         } />
         
-        <Route path="/admin/users" element={
-          <AdminRoute>
-            <AdminUserManagement />
-          </AdminRoute>
-        } />
+<Route path="/admin-user-management" element={
+  <AdminRoute>
+    <AdminUserManagement />
+  </AdminRoute>
+} />
         
         <Route path="/farm/management" element={
           <FarmerRoute>

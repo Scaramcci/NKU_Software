@@ -1,5 +1,5 @@
 import api from './api';
-
+//用户登录界面
 // 用户角色常量
 export const USER_ROLES = {
   USER: 'user',         // 普通用户
@@ -15,10 +15,12 @@ export const login = async (credentials) => {
     
     // 模拟API调用
     const usersData = JSON.parse(localStorage.getItem('users') || '[]');
-    const user = usersData.find(u => 
-      u.username === credentials.username && 
-      u.password === credentials.password
-    );
+const user = usersData.find(u =>
+  u.username === credentials.username &&
+  u.password === credentials.password &&
+  u.role === credentials.role // 👈 新增对比角色身份
+);
+
     
     if (!user) {
       throw new Error('用户名或密码错误');

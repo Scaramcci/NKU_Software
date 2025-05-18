@@ -1,0 +1,21 @@
+/* src/pages/MainInfo/DeviceStatus.css */
+.device-status-card {
+  background: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364);
+  color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+}
+
+.device-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.device-name {
+  font-weight: 500;
+  font-size: 16px;
+  color: #fff;
+}
