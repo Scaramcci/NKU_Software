@@ -12,7 +12,7 @@ const VideoRecognition = () => {
       <div className="video-recognition-preview">
         <div className="video-recognition-box">
           <video width="100%" controls>
-            <source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4" />
+            <source src='/videos/vd4.mp4' type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>
