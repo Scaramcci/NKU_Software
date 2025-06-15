@@ -1,0 +1,150 @@
+/* AI浮窗聊天组件样式 */
+.ai-floating-chat {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.chat-card {
+  background: linear-gradient(135deg, #0b1d33, #11405a);
+  border: none;
+  border-radius: 12px;
+}
+
+.chat-card .ant-card-head {
+  background: linear-gradient(135deg, #1890ff, #52c41a);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.chat-card .ant-card-head-title {
+  color: #fff;
+  font-weight: 600;
+}
+
+.chat-header {
+  user-select: none;
+}
+
+.chat-messages {
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.message-item {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.message-item.user {
+  flex-direction: row-reverse;
+}
+
+.message-item.user .message-content {
+  text-align: right;
+  margin-right: 8px;
+  margin-left: 0;
+}
+
+.message-item.ai .message-content {
+  margin-left: 8px;
+}
+
+.message-content {
+  max-width: 70%;
+  flex: 1;
+}
+
+.message-text {
+  background: #f0f0f0;
+  padding: 8px 12px;
+  border-radius: 12px;
+  margin-bottom: 4px;
+  word-wrap: break-word;
+  line-height: 1.4;
+}
+
+.message-item.user .message-text {
+  background: #1890ff;
+  color: #fff;
+}
+
+.message-item.ai .message-text {
+  background: #f6ffed;
+  border: 1px solid #b7eb8f;
+}
+
+.chat-input {
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.chat-input .ant-input {
+  border-radius: 8px;
+}
+
+.chat-input .ant-btn {
+  border-radius: 8px;
+  height: auto;
+}
+
+/* 拖拽时的样式 */
+.ai-floating-chat:active {
+  cursor: grabbing;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .ai-floating-chat {
+    width: 90vw !important;
+    height: 70vh !important;
+    left: 5vw !important;
+    top: 15vh !important;
+  }
+  
+  .message-content {
+    max-width: 85%;
+  }
+}
+
+/* 滚动条样式 */
+.chat-messages::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chat-messages::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* 动画效果 */
+.ai-floating-chat {
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* 加载动画 */
+.ant-spin {
+  color: #1890ff;
+}

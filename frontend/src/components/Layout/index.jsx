@@ -1,5 +1,5 @@
-import React from 'react';
-import { Layout, Menu } from 'antd';
+import React, { useState } from 'react';
+import { Layout, Menu, Button } from 'antd';
 import { useNavigate, Outlet, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import {
@@ -9,8 +9,10 @@ import {
   DatabaseOutlined,
   UsergroupAddOutlined,
   UserOutlined,
-  LogoutOutlined
+  LogoutOutlined,
+  RobotOutlined
 } from '@ant-design/icons';
+import AIFloatingChat from '../AIFloatingChat';
 
 const { Header, Sider, Content } = Layout;
 
@@ -19,6 +21,7 @@ const MainLayout = () => {
   const location = useLocation();
   const { user } = useSelector(state => state.auth);
   const role = user?.role || 'user'; // fallback 防止未登录
+  const [aiChatVisible, setAiChatVisible] = useState(false);
 
   // 菜单配置（根据角色严格区分）
   const rawMenuItems = [
@@ -105,6 +108,32 @@ const MainLayout = () => {
           }}
           items={menuItems}
         />
+        
+        {/* AI智能助手按钮 */}
+        <div style={{ 
+          position: 'absolute', 
+          bottom: 20, 
+          left: 16, 
+          right: 16 
+        }}>
+          <Button
+            type="primary"
+            icon={<RobotOutlined />}
+            onClick={() => setAiChatVisible(true)}
+            style={{
+              width: '100%',
+              height: 48,
+              borderRadius: 8,
+              background: 'linear-gradient(135deg, #1890ff, #52c41a)',
+              border: 'none',
+              fontSize: 16,
+              fontWeight: 600,
+              boxShadow: '0 4px 12px rgba(24, 144, 255, 0.3)'
+            }}
+          >
+            AI智能助手
+          </Button>
+        </div>
       </Sider>
       <Layout>
         <Header style={{
@@ -121,6 +150,12 @@ const MainLayout = () => {
           <Outlet />
         </Content>
       </Layout>
+      
+      {/* AI浮窗聊天组件 */}
+      <AIFloatingChat 
+        visible={aiChatVisible} 
+        onClose={() => setAiChatVisible(false)} 
+      />
     </Layout>
   );
 };
