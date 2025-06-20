@@ -1,4 +1,6 @@
 import React from 'react';
+import './App.css';
+import './styles/ocean-theme.css';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import MainLayout from './components/Layout';

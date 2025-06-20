@@ -1,0 +1,178 @@
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 海洋渐变 -->
+    <linearGradient id="oceanGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#001122;stop-opacity:1" />
+      <stop offset="30%" style="stop-color:#003366;stop-opacity:1" />
+      <stop offset="60%" style="stop-color:#004488;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0066aa;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- 波浪渐变 -->
+    <linearGradient id="waveGradient1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#0088cc;stop-opacity:0.3" />
+      <stop offset="50%" style="stop-color:#00aaff;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#0088cc;stop-opacity:0.3" />
+    </linearGradient>
+    
+    <linearGradient id="waveGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00ccff;stop-opacity:0.2" />
+      <stop offset="50%" style="stop-color:#66ddff;stop-opacity:0.4" />
+      <stop offset="100%" style="stop-color:#00ccff;stop-opacity:0.2" />
+    </linearGradient>
+    
+    <!-- 气泡渐变 -->
+    <radialGradient id="bubbleGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.8" />
+      <stop offset="70%" style="stop-color:#ccffff;stop-opacity:0.4" />
+      <stop offset="100%" style="stop-color:#00aaff;stop-opacity:0.1" />
+    </radialGradient>
+    
+    <!-- 动画定义 -->
+    <animateTransform id="waveAnim1" attributeName="transform" type="translate" 
+                      values="-100,0;100,0;-100,0" dur="20s" repeatCount="indefinite"/>
+    <animateTransform id="waveAnim2" attributeName="transform" type="translate" 
+                      values="100,0;-100,0;100,0" dur="25s" repeatCount="indefinite"/>
+    <animateTransform id="bubbleFloat" attributeName="transform" type="translate" 
+                      values="0,10;0,-10;0,10" dur="3s" repeatCount="indefinite"/>
+  </defs>
+  
+  <!-- 主背景 -->
+  <rect width="1920" height="1080" fill="url(#oceanGradient)"/>
+  
+  <!-- 深层波浪 -->
+  <g opacity="0.6">
+    <path d="M0,600 Q480,550 960,600 T1920,600 L1920,1080 L0,1080 Z" fill="url(#waveGradient1)">
+      <animateTransform attributeName="transform" type="translate" 
+                        values="-100,0;100,0;-100,0" dur="30s" repeatCount="indefinite"/>
+    </path>
+  </g>
+  
+  <!-- 中层波浪 -->
+  <g opacity="0.4">
+    <path d="M0,650 Q320,600 640,650 T1280,650 Q1600,600 1920,650 L1920,1080 L0,1080 Z" fill="url(#waveGradient2)">
+      <animateTransform attributeName="transform" type="translate" 
+                        values="100,0;-100,0;100,0" dur="25s" repeatCount="indefinite"/>
+    </path>
+  </g>
+  
+  <!-- 表层波浪 -->
+  <g opacity="0.3">
+    <path d="M0,700 Q240,680 480,700 T960,700 Q1200,680 1440,700 T1920,700 L1920,1080 L0,1080 Z" fill="url(#waveGradient1)">
+      <animateTransform attributeName="transform" type="translate" 
+                        values="-50,0;50,0;-50,0" dur="20s" repeatCount="indefinite"/>
+    </path>
+  </g>
+  
+  <!-- 气泡群 -->
+  <g opacity="0.6">
+    <!-- 大气泡 -->
+    <circle cx="200" cy="300" r="8" fill="url(#bubbleGradient)">
+      <animateTransform attributeName="transform" type="translate" 
+                        values="0,0;0,-20;0,0" dur="4s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.6;0.3;0.6" dur="4s" repeatCount="indefinite"/>
+    </circle>
+    
+    <circle cx="800" cy="200" r="12" fill="url(#bubbleGradient)">
+      <animateTransform attributeName="transform" type="translate" 
+                        values="0,0;0,-30;0,0" dur="5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.5;0.2;0.5" dur="5s" repeatCount="indefinite"/>
+    </circle>
+    
+    <circle cx="1400" cy="400" r="6" fill="url(#bubbleGradient)">
+      <animateTransform attributeName="transform" type="translate" 
+                        values="0,0;0,-15;0,0" dur="3s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.7;0.4;0.7" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- 中等气泡 -->
+    <circle cx="400" cy="500" r="4" fill="url(#bubbleGradient)">
+      <animateTransform attributeName="transform" type="translate" 
+                        values="0,0;0,-10;0,0" dur="3.5s" repeatCount="indefinite"/>
+    </circle>
+    
+    <circle cx="1200" cy="150" r="5" fill="url(#bubbleGradient)">
+      <animateTransform attributeName="transform" type="translate" 
+                        values="0,0;0,-12;0,0" dur="4.2s" repeatCount="indefinite"/>
+    </circle>
+    
+    <circle cx="600" cy="350" r="3" fill="url(#bubbleGradient)">
+      <animateTransform attributeName="transform" type="translate" 
+                        values="0,0;0,-8;0,0" dur="2.8s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- 小气泡群 -->
+    <circle cx="100" cy="450" r="2" fill="url(#bubbleGradient)">
+      <animateTransform attributeName="transform" type="translate" 
+                        values="0,0;0,-5;0,0" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    
+    <circle cx="1600" cy="250" r="2" fill="url(#bubbleGradient)">
+      <animateTransform attributeName="transform" type="translate" 
+                        values="0,0;0,-6;0,0" dur="2.5s" repeatCount="indefinite"/>
+    </circle>
+    
+    <circle cx="900" cy="480" r="1.5" fill="url(#bubbleGradient)">
+      <animateTransform attributeName="transform" type="translate" 
+                        values="0,0;0,-4;0,0" dur="1.8s" repeatCount="indefinite"/>
+    </circle>
+    
+    <circle cx="1100" cy="380" r="2.5" fill="url(#bubbleGradient)">
+      <animateTransform attributeName="transform" type="translate" 
+                        values="0,0;0,-7;0,0" dur="3.2s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+  
+  <!-- 光线效果 -->
+  <g opacity="0.2">
+    <path d="M960,0 L980,600 L940,600 Z" fill="url(#waveGradient2)">
+      <animate attributeName="opacity" values="0.2;0.4;0.2" dur="6s" repeatCount="indefinite"/>
+    </path>
+    
+    <path d="M400,0 L420,400 L380,400 Z" fill="url(#waveGradient2)">
+      <animate attributeName="opacity" values="0.1;0.3;0.1" dur="8s" repeatCount="indefinite"/>
+    </path>
+    
+    <path d="M1500,0 L1520,500 L1480,500 Z" fill="url(#waveGradient2)">
+      <animate attributeName="opacity" values="0.15;0.35;0.15" dur="7s" repeatCount="indefinite"/>
+    </path>
+  </g>
+  
+  <!-- 海底植物轮廓 -->
+  <g opacity="0.3">
+    <path d="M0,800 Q50,750 100,800 Q150,850 200,800 Q250,750 300,800 L300,1080 L0,1080 Z" 
+          fill="rgba(0,100,150,0.4)">
+      <animateTransform attributeName="transform" type="skewX" 
+                        values="0;2;0;-2;0" dur="8s" repeatCount="indefinite"/>
+    </path>
+    
+    <path d="M1620,850 Q1670,800 1720,850 Q1770,900 1820,850 Q1870,800 1920,850 L1920,1080 L1620,1080 Z" 
+          fill="rgba(0,120,180,0.4)">
+      <animateTransform attributeName="transform" type="skewX" 
+                        values="0;-2;0;2;0" dur="10s" repeatCount="indefinite"/>
+    </path>
+  </g>
+  
+  <!-- 粒子效果 -->
+  <g opacity="0.4">
+    <circle cx="300" cy="100" r="1" fill="#66ddff">
+      <animate attributeName="cy" values="100;1000;100" dur="15s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.4;0.1;0.4" dur="15s" repeatCount="indefinite"/>
+    </circle>
+    
+    <circle cx="700" cy="50" r="0.8" fill="#88eeff">
+      <animate attributeName="cy" values="50;950;50" dur="18s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.3;0.1;0.3" dur="18s" repeatCount="indefinite"/>
+    </circle>
+    
+    <circle cx="1300" cy="80" r="1.2" fill="#aaffff">
+      <animate attributeName="cy" values="80;980;80" dur="12s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.5;0.1;0.5" dur="12s" repeatCount="indefinite"/>
+    </circle>
+    
+    <circle cx="1700" cy="120" r="0.6" fill="#ccffff">
+      <animate attributeName="cy" values="120;1020;120" dur="20s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.2;0.1;0.2" dur="20s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+</svg>
