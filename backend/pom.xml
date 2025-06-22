@@ -1,50 +1,89 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" 
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
                              http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.ocean</groupId>
-    <artifactId>ocean-backend</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <packaging>pom</packaging>
+  <modelVersion>4.0.0</modelVersion>
 
-    <name>智慧海洋牧场后端</name>
-    <modules>
-        <module>common</module>
-        <module>registry</module>
-        <module>gateway</module>
-        <module>user-service</module>
-        <module>farm-service</module>
-        <module>device-service</module>
-        <module>alarm-service</module>
-    </modules>
+  <!-- 继承 Spring Boot 官方 starter parent -->
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.6.3</version>
+    <relativePath/> <!-- 不依赖本地路径 -->
+  </parent>
 
-    <properties>
-        <java.version>1.8</java.version>
-        <spring.boot.version>2.6.3</spring.boot.version>
-    </properties>
+  <groupId>com.ocean</groupId>
+  <artifactId>ocean-backend</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring.boot.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
+  <name>智慧海洋牧场后端</name>
+  <description>多模块后端系统，包含注册中心、网关、用户/设备/渔场/预警微服务等</description>
 
-    <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-maven-plugin</artifactId>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
+  <!-- 子模块 -->
+  <modules>
+    <module>common</module>
+    <module>registry</module>
+    <module>gateway</module>
+    <module>user-service</module>
+    <module>farm-service</module>
+    <module>device-service</module>
+    <module>alarm-service</module>
+  </modules>
+
+  <!-- 全局属性 -->
+  <properties>
+    <java.version>1.8</java.version>
+    <spring.cloud.version>2021.0.1</spring.cloud.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>${java.version}</maven.compiler.source>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
+  </properties>
+
+  <!-- 依赖版本统一管理 -->
+  <dependencyManagement>
+    <dependencies>
+      <!-- Spring Cloud 依赖版本 -->
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-dependencies</artifactId>
+        <version>${spring.cloud.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <!-- Spring Boot Maven 插件管理 -->
+        <plugin>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-maven-plugin</artifactId>
+          <version>2.6.3</version>
+        </plugin>
+        <!-- Maven 编译插件管理 -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.8.1</version>
+          <configuration>
+            <source>${java.version}</source>
+            <target>${java.version}</target>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+
+    <!-- 让父项目本身也能被构建 -->
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
+
 </project>

@@ -20,16 +20,18 @@ public class AlarmService {
         this.recordRepository = recordRepository;
     }
 
-    // 预警阈值增删改查
+    // 查询预警阈值列表
     public List<AlarmThreshold> getThresholds(Long farmId) {
         return thresholdRepository.findByFarmId(farmId);
     }
 
+    // 添加或更新阈值
     public AlarmThreshold addOrUpdateThreshold(AlarmThreshold threshold) {
         threshold.setCreatedAt(LocalDateTime.now());
         return thresholdRepository.save(threshold);
     }
 
+    // 删除阈值
     public void deleteThreshold(Long id) {
         thresholdRepository.deleteById(id);
     }
@@ -39,23 +41,25 @@ public class AlarmService {
         return recordRepository.findByFarmId(farmId);
     }
 
-    // 模拟告警触发（可由定时任务调用）
+    // 模拟告警检测与记录
     public void checkAndTriggerAlarm(Long farmId, String parameter, Double currentValue) {
         List<AlarmThreshold> thresholds = thresholdRepository.findByFarmId(farmId);
         for (AlarmThreshold threshold : thresholds) {
-            if (threshold.getParameter().equals(parameter)) {
-                boolean alarm = false;
+            if (parameter.equals(threshold.getParameter())) {
+                boolean alarmTriggered = false;
                 switch (threshold.getOperator()) {
                     case ">":
-                        alarm = currentValue > threshold.getThresholdValue();
+                        alarmTriggered = currentValue > threshold.getThresholdValue();
                         break;
                     case "<":
-                        alarm = currentValue < threshold.getThresholdValue();
+                        alarmTriggered = currentValue < threshold.getThresholdValue();
                         break;
+                    // 可以根据需要添加更多比较符
                     default:
                         break;
                 }
-                if (alarm) {
+
+                if (alarmTriggered) {
                     AlarmRecord record = new AlarmRecord();
                     record.setFarmId(farmId);
                     record.setParameter(parameter);

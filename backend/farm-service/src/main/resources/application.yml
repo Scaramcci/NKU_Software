@@ -5,15 +5,17 @@ spring:
   application:
     name: farm-service
   datasource:
-    url: jdbc:mysql://localhost:3306/ocean_farm?useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/ocean_farm?useSSL=false&serverTimezone=UTC&characterEncoding=utf8
     username: root
-    password: your_password_here
+    password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
-
+  mvc:
+    pathmatch:
+      matching-strategy: ant-path-matcher
 eureka:
   client:
     service-url:

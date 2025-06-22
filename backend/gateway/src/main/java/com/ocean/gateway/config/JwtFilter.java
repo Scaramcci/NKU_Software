@@ -1,6 +1,7 @@
-package com.ocean.gateway.filter;
+package com.ocean.gateway.config;
 
 import com.ocean.common.util.JwtUtil;
+// Ensure this path is correct or update itD:\.git\NKU_Software\backend\common
 import io.jsonwebtoken.Claims;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.server.reactive.ServerHttpRequest;
@@ -19,7 +20,8 @@ public class JwtFilter implements WebFilter {
         String path = request.getURI().getPath();
 
         // 允许无需认证的路径
-        if (path.startsWith("/api/users/login") || path.startsWith("/api/users/register") || path.startsWith("/swagger-ui") || path.startsWith("/v3/api-docs")) {
+        if (path.startsWith("/api/users/login") || path.startsWith("/api/users/register")
+                || path.startsWith("/swagger-ui") || path.startsWith("/v3/api-docs")) {
             return chain.filter(exchange);
         }
 

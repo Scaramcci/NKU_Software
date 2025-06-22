@@ -61,16 +61,52 @@ npm start
 
 ### 后端启动
 ```bash
-cd backend
-# 启动注册中心
+1. 启动注册中心
 cd registry
-./mvnw spring-boot:run
+mvn spring-boot:run
+打开浏览器访问 http://localhost:8761，确认 Eureka 正常运行。
 
-# 启动各微服务
+2. 启动网关
+cd ../gateway
+mvn spring-boot:run
+接口统一通过 http://localhost:8000 访问。
+
+3. 启动各微服务（按需）
 cd ../user-service
-./mvnw spring-boot:run
+mvn spring-boot:run
 
-# 启动其他服务...
+cd ../farm-service
+mvn spring-boot:run
+
+cd ../device-service
+mvn spring-boot:run
+
+cd ../alarm-service
+mvn spring-boot:run
+
+Swagger 接口文档地址（推荐使用）
+你可以通过如下路径访问接口文档：
+http://localhost:8000/swagger-ui.html
+每个服务模块都集成了 Swagger，已自动注册到 API 网关。
+
+Postman 测试示例
+1. 用户注册
+POST http://localhost:8000/api/users/register
+{
+  "username": "admin",
+  "password": "123456"
+}
+2. 登录获取 Token
+POST http://localhost:8000/api/users/login
+返回：
+{
+  "token": "Bearer xxx.yyy.zzz"
+}
+3. 鉴权请求（带上 token）
+GET http://localhost:8000/api/farms
+Headers:
+Authorization: Bearer xxx.yyy.zzz
+
 ```
 
 ## 功能模块
