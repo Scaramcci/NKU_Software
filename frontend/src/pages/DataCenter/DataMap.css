@@ -1,0 +1,21 @@
+.data-panel-title {
+  color: #fff;
+  font-weight: bold;
+}
+.data-map-main {
+  height: 220px;
+  background: #002244;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  color: #00ffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.data-map-struct {
+  height: 80px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

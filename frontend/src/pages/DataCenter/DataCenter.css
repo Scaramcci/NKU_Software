@@ -1,0 +1,52 @@
+/* src/pages/DataCenter/DataCenter.css */
+
+.data-center-wrapper {
+  padding: 16px;
+  background-color: #020d1f;
+  min-height: 100vh;
+  color: #ffffff;
+}
+
+.data-center-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #00ffff;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.data-center-row {
+  margin-top: 8px;
+}
+
+.data-panel {
+  background-color: #061e3c !important;
+  border-radius: 12px !important;
+  color: #ffffff;
+}
+
+.data-panel .ant-card-head {
+  border-bottom: 1px solid #0e2a4a;
+  background-color: transparent;
+}
+
+.data-panel .ant-card-head-title {
+  color: #00ffff;
+}
+
+.data-center-btn {
+  padding: 6px 16px;
+  background-color: #0050b3;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.data-center-btn:hover {
+  background-color: #1890ff;
+  color: #ffffff;
+}

@@ -1,30 +1,21 @@
-/* src/pages/SmartCenter/modules/EnvironmentGauge.css */
-
 .environment-gauge-container {
   background: linear-gradient(145deg, #0a1e36, #12415f);
   border-radius: 16px;
-  padding: 24px;
+  padding: 16px 20px;
   color: #e0f7ff;
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
-  border: 1px solid rgba(0, 255, 255, 0.1);
-  margin-bottom: 20px;
+  box-shadow: 0 0 16px rgba(0, 255, 255, 0.15);
+  border: 1px solid rgba(0, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
 }
 
 .environment-gauge-title {
-  color: #ffffff; /* 统一为白色 */
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffffff;
   text-align: center;
-  text-shadow: 0 0 10px #dadede;
-  margin-bottom: 20px;
-}
-
-.environment-gauge-card .environment-gauge-title {
-  color: #ffffff !important; /* 强制设置为白色 */
-  text-align: center;
-  text-shadow: 0 0 10px #dadede;
-  margin-bottom: 20px;
-}
-
-.environment-gauge-chart {
-  width: 100%;
-  height: 280px;
+  text-shadow: 0 0 6px #dadede;
+  margin-bottom: 12px;
 }

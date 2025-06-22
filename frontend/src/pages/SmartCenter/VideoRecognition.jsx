@@ -1,28 +1,36 @@
-// src/pages/SmartCenter/VideoRecognition.jsx
 import React from 'react';
-import { Card, Typography } from 'antd';
 import './VideoRecognition.css';
-
-const { Title, Text } = Typography;
 
 const VideoRecognition = () => {
   return (
-    <Card className="video-recognition-card">
-      <Title level={4} className="video-recognition-title"style={{ color: '#fff' }}>图像识别区域</Title>
-      <div className="video-recognition-preview">
-        <div className="video-recognition-box">
-          <video width="100%" controls>
-            <source src='/videos/vd4.mp4' type="video/mp4" />
-            Your browser does not support the video tag.
+    <div className="video-container">
+      {/* 主视频区域 */}
+      <div className="main-video">
+        <video controls>
+          <source src="/videos/vd4.mp4" type="video/mp4" />
+          您的浏览器不支持 video 标签。
+        </video>
+        <img src="/images/main_view.jpg" alt="主视角鱼群" className="video-image" />
+      </div>
+
+      {/* 侧边视频区域 */}
+      <div className="side-videos">
+        <div className="sub-video">
+          <div className="sub-video-title">左目镜头</div>
+          <video controls>
+            <source src="/videos/vd4.mp4" type="video/mp4" />
           </video>
+          <img src="/images/left_view.jpg" alt="左目鱼群" className="video-image" />
         </div>
-        <div className="video-recognition-info">
-          <Text className="video-info-text">识别对象：鱼群</Text>
-          <Text className="video-info-text">当前活跃区域：A3 区域</Text>
-          <Text className="video-info-text">识别准确率：92%</Text>
+        <div className="sub-video">
+          <div className="sub-video-title">右目镜头</div>
+          <video controls>
+            <source src="/videos/vd4.mp4" type="video/mp4" />
+          </video>
+          <img src="/images/right_view.jpg" alt="右目鱼群" className="video-image" />
         </div>
       </div>
-    </Card>
+    </div>
   );
 };
 

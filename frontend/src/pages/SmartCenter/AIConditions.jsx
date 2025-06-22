@@ -1,10 +1,7 @@
-// src/pages/SmartCenter/AIConditions.jsx
 import React from 'react';
-import { Card, Typography, List } from 'antd';
-import { RobotOutlined, BulbOutlined } from '@ant-design/icons';
+import { Card } from 'antd';
+import { BulbOutlined, RobotOutlined } from '@ant-design/icons';
 import './AIConditions.css';
-
-const { Title, Text } = Typography;
 
 const suggestions = [
   {
@@ -21,21 +18,19 @@ const suggestions = [
 
 const AIConditions = () => {
   return (
-    <Card className="ai-conditions-card">
-      <Title level={4} className="ai-conditions-title"style={{ color: '#fff' }}>AI 智能建议</Title>
-      <List
-        itemLayout="horizontal"
-        dataSource={suggestions}
-        renderItem={(item) => (
-          <List.Item className="ai-suggestion-item">
-            <List.Item.Meta
-              avatar={<div className="ai-icon">{item.icon}</div>}
-              title={<Text className="ai-suggestion-title">{item.title}</Text>}
-              description={<Text className="ai-suggestion-desc">{item.description}</Text>}
-            />
-          </List.Item>
-        )}
-      />
+    <Card className="ai-card" bordered={false}>
+      <div className="ai-title">AI 智能建议</div>
+      <div className="ai-content">
+        {suggestions.map((item, index) => (
+          <div className="ai-item" key={index}>
+            <div className="ai-icon">{item.icon}</div>
+            <div className="ai-texts">
+              <div className="ai-item-title">{item.title}</div>
+              <div className="ai-item-desc">{item.description}</div>
+            </div>
+          </div>
+        ))}
+      </div>
     </Card>
   );
 };

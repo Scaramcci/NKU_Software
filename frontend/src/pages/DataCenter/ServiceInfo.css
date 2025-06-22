@@ -1,0 +1,18 @@
+.data-panel-title {
+  color: #fff;
+  font-weight: bold;
+}
+.data-center-btn {
+  background: #00ffff;
+  color: #001a3a;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 18px;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.data-center-btn:hover {
+  background: #00bfff;
+}

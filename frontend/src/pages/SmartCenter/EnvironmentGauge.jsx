@@ -37,7 +37,7 @@ const EnvironmentGauge = () => {
           distance: -18,
           length: 10,
           lineStyle: {
-            color: '#aaa'
+            color: '#888'
           }
         },
         axisTick: {
@@ -46,11 +46,12 @@ const EnvironmentGauge = () => {
         axisLabel: {
           color: '#ccc',
           distance: 12,
-          fontSize: 12
+          fontSize: 11
         },
         detail: {
           valueAnimation: true,
-          fontSize: 28,
+          fontSize: 26,
+          fontWeight: 'bold',
           color: '#00e0ff',
           offsetCenter: [0, '50%'],
           formatter: '{value}'
@@ -66,8 +67,10 @@ const EnvironmentGauge = () => {
 
   return (
     <div className="environment-gauge-container">
-      <Title level={4} className="ai-conditions-title"style={{ color: '#fff' }}>海洋牧场环境感知得分</Title>
-      <ReactECharts option={option} style={{ height: 260 }} />
+      <Title level={5} className="environment-gauge-title">
+        海洋牧场环境感知得分
+      </Title>
+      <ReactECharts option={option} style={{ height: '220px', width: '100%' }} />
     </div>
   );
 };

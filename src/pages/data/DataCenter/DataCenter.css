@@ -1,0 +1,73 @@
+.data-center-wrapper {
+  background: #001d3d;
+  padding: 20px;
+  min-height: 100vh;
+  color: #fff;
+  font-family: 'Microsoft YaHei', sans-serif;
+}
+.data-center-title {
+  font-size: 22px;
+  font-weight: bold;
+  color: #00eaff;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.data-center-content {
+  display: flex;
+  gap: 16px;
+}
+.data-center-left,
+.data-center-middle,
+.data-center-right {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.data-center-left {
+  flex: 1;
+}
+.data-center-middle {
+  flex: 2;
+}
+.data-center-right {
+  flex: 1;
+}
+.data-panel {
+  background: #002b4c;
+  border-radius: 10px;
+  color: #fff;
+  padding: 16px;
+}
+.panel-title {
+  font-weight: bold;
+  color: #00eaff;
+  margin-bottom: 8px;
+}
+.placeholder {
+  height: 80px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.status {
+  margin: 8px 0;
+  padding-left: 8px;
+  border-left: 4px solid #fff;
+}
+.status.cpu { border-color: #00ffff; }
+.status.mem { border-color: #ff4d4f; }
+.status.gpu { border-color: #faad14; }
+.map-panel {
+  background: #002244;
+  padding: 16px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.map-icon {
+  font-size: 48px;
+  margin-right: 16px;
+  color: #00eaff;
+}

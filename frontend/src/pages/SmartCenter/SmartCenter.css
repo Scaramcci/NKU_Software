@@ -1,6 +1,61 @@
-.smart-center-container {
-  padding: 24px;
-  background: linear-gradient(to bottom, #fafbfb, #f9f9f9);
-  min-height: 100vh;
-  color: #ffffff;
+.smart-center-wrapper {
+  height: 100vh;
+  padding: 16px;
+  background: #001530;
+  overflow: hidden;
+  margin-top: -15px; /* 整体上移，可根据需要调整数值 */
+}
+
+.smart-center-row {
+  height: 100%;
+}
+
+/* 修复关键：让列高度继承父容器 */
+.ant-col {
+  height: 100%;
+}
+
+/* 每列两块内容垂直布局 */
+.column {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* 让内容靠上排列 */
+  height: 100%;
+}
+
+/* 调整上下模块高度比例，让下方更窄 */
+.top-panel {
+  flex: 0 1 55%;
+  margin-bottom: 6px;
+}
+
+.bottom-panel {
+  flex: 0 1 20%;
+}
+
+/* 模块样式 */
+.panel {
+  background: linear-gradient(to bottom right, #003352, #001d2e);
+  border-radius: 10px;
+  padding: 4px 6px; /* 再缩小内边距 */
+  color: white;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  font-size: 11px;
+  /* min-height: unset;  如有需要可取消最小高度限制 */
+}
+
+.panel * {
+  font-size: 11px !important; /* 强制缩小内部所有字体 */
+}
+
+.panel .ant-typography,
+.panel .ant-card-head-title,
+.panel-title,
+.fish-info-header,
+.section-title {
+  color: #fff !important;
+  font-weight: bold !important;
 }

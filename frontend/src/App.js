@@ -18,6 +18,7 @@ import { USER_ROLES } from './services/authService';
 import MainInfo from './pages/MainInfo';
 import SmartCenter from './pages/SmartCenter'; 
 import UnderwaterSystem from './pages/UnderwaterSystem'; // 如果你是放在 pages/UnderwaterSystem/index.jsx
+import DataCenter from './pages/DataCenter'; // 新增引入
 
 // 基础私有路由，只检查是否登录
 const PrivateRoute = ({ children }) => {
@@ -113,6 +114,13 @@ function App() {
           <FarmerRoute>
             <AlarmSystem />
           </FarmerRoute>
+        } />
+        
+        {/* 数据中心（仅管理员可见） */}
+        <Route path="/data-center" element={
+          <AdminRoute>
+            <DataCenter />
+          </AdminRoute>
         } />
       </Route>
       

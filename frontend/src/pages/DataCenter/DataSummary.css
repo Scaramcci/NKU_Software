@@ -1,0 +1,19 @@
+/* src/pages/DataCenter/DataCenter.css */
+
+.data-panel {
+  background: #002b4c !important;
+  border-radius: 10px;
+  padding: 16px;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.data-panel .ant-statistic-title {
+  color: #00ffff;
+  font-weight: bold;
+}
+
+.data-panel .ant-statistic-content-value {
+  color: #ffffff;
+  font-size: 24px;
+}
