@@ -3,7 +3,7 @@ import './App.css';
 import './styles/ocean-theme.css';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import MainLayout from './components/Layout';
+import ResponsiveLayout from './components/Layout/ResponsiveLayout';
 import UserAuth from './pages/UserAuth';
 import Statistics from './pages/Statistics';
 import Unauthorized from './pages/Unauthorized';
@@ -51,7 +51,7 @@ function App() {
       
 
       {/* 主框架：嵌套路由 */}
-      <Route path="/" element={<MainLayout />}>
+      <Route path="/" element={<ResponsiveLayout />}>
       {/* 首页默认跳转 */}
       <Route index element={<Navigate to="/main-info" replace />} />
 
