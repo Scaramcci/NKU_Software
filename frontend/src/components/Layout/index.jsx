@@ -20,10 +20,9 @@ const MainLayout = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { user } = useSelector(state => state.auth);
-  const role = user?.role || 'user'; // fallback 防止未登录
+  const role = user?.role || 'user';
   const [aiChatVisible, setAiChatVisible] = useState(false);
 
-  // 菜单配置（根据角色严格区分）
   const rawMenuItems = [
     {
       key: '/main-info',
@@ -41,13 +40,13 @@ const MainLayout = () => {
       key: '/underwater-system',
       label: '水下系统',
       icon: <EnvironmentOutlined />,
-      roles: ['farmer', 'admin'] // ❌ 不含 user
+      roles: ['farmer', 'admin']
     },
     {
       key: '/data-center',
       label: '数据中心',
       icon: <DatabaseOutlined />,
-      roles: ['admin'] // ❌ 仅管理员
+      roles: ['admin']
     },
     {
       key: '/admin-user-management',
@@ -74,7 +73,6 @@ const MainLayout = () => {
     }
   ];
 
-  // 根据用户角色过滤可见菜单项
   const menuItems = rawMenuItems
     .filter(item => item.roles.includes(role))
     .map(({ key, label, icon, onClick }) => ({
@@ -85,12 +83,11 @@ const MainLayout = () => {
     }));
 
   return (
-    <Layout style={{ minHeight: '100vh', background: 'transparent' }}>
-      <Sider style={{
+    <Layout style={{ height: '100vh', background: '#020d1f', overflow: 'hidden' }}>
+      <Sider width={220} style={{
         background: 'rgba(0, 20, 40, 0.9)',
         backdropFilter: 'blur(10px)',
-        borderRight: '2px solid rgba(0, 200, 255, 0.3)',
-        boxShadow: '4px 0 20px rgba(0, 150, 255, 0.1)'
+        borderRight: '2px solid rgba(0, 200, 255, 0.3)'
       }}>
         <div style={{
           height: 80,
@@ -103,16 +100,11 @@ const MainLayout = () => {
           background: 'linear-gradient(135deg, rgba(0, 150, 255, 0.2), rgba(0, 100, 200, 0.3))',
           borderRadius: '15px',
           border: '1px solid rgba(0, 200, 255, 0.3)',
-          boxShadow: '0 4px 15px rgba(0, 150, 255, 0.2)',
-          textShadow: '0 2px 4px rgba(0, 0, 0, 0.5)',
-          position: 'relative',
-          overflow: 'hidden'
         }}>
           <span style={{
             background: 'linear-gradient(135deg, #00ccff, #0088ff)',
             WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text'
+            WebkitTextFillColor: 'transparent'
           }}>
             🌊 智慧渔场系统
           </span>
@@ -127,113 +119,59 @@ const MainLayout = () => {
           }}
           items={menuItems}
         />
-        
-        {/* AI智能助手按钮 */}
-        <div style={{ 
-          position: 'absolute', 
-          bottom: 20, 
-          left: 12, 
-          right: 12 
-        }}>
+        <div style={{ position: 'absolute', bottom: 20, left: 12, right: 12 }}>
           <Button
             type="primary"
-            icon={<RobotOutlined style={{ fontSize: '18px' }} />}
+            icon={<RobotOutlined />}
             onClick={() => setAiChatVisible(true)}
             style={{
               width: '100%',
-              height: 56,
-              borderRadius: '15px',
-              background: 'linear-gradient(135deg, #00aaff, #0066cc, #004499)',
-              border: '2px solid rgba(0, 200, 255, 0.4)',
-              fontSize: 16,
-              fontWeight: 700,
-              color: '#ffffff',
-              boxShadow: 
-                '0 6px 20px rgba(0, 150, 255, 0.4), ' +
-                '0 3px 10px rgba(0, 100, 200, 0.3), ' +
-                'inset 0 1px 0 rgba(255, 255, 255, 0.2)',
-              transition: 'all 0.3s ease',
-              textShadow: '0 1px 2px rgba(0, 0, 0, 0.3)',
-              position: 'relative',
-              overflow: 'hidden'
-            }}
-            onMouseEnter={(e) => {
-              e.target.style.transform = 'translateY(-2px) scale(1.02)';
-              e.target.style.boxShadow = 
-                '0 8px 25px rgba(0, 150, 255, 0.5), ' +
-                '0 4px 15px rgba(0, 100, 200, 0.4), ' +
-                'inset 0 1px 0 rgba(255, 255, 255, 0.3)';
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.transform = 'translateY(0) scale(1)';
-              e.target.style.boxShadow = 
-                '0 6px 20px rgba(0, 150, 255, 0.4), ' +
-                '0 3px 10px rgba(0, 100, 200, 0.3), ' +
-                'inset 0 1px 0 rgba(255, 255, 255, 0.2)';
+              height: 48,
+              borderRadius: 12,
+              background: 'linear-gradient(135deg, #00aaff, #0066cc)',
+              border: 'none',
+              fontSize: 15,
+              fontWeight: 600
             }}
           >
             🤖 AI智能助手
           </Button>
         </div>
       </Sider>
-      <Layout style={{ background: 'transparent' }}>
+
+      <Layout style={{ background: '#020d1f' }}>
         <Header style={{
-          padding: '0 32px',
+          height: 64,
+          padding: '0 24px',
           background: 'rgba(0, 20, 40, 0.85)',
-          backdropFilter: 'blur(10px)',
-          borderBottom: '2px solid rgba(0, 200, 255, 0.3)',
-          boxShadow: '0 2px 20px rgba(0, 150, 255, 0.1)',
+          color: '#fff',
           display: 'flex',
-          justifyContent: 'flex-end',
           alignItems: 'center',
-          fontSize: 16,
-          color: '#ffffff',
-          borderRadius: '0 0 15px 0'
+          justifyContent: 'flex-end',
+          borderBottom: '1px solid rgba(0, 200, 255, 0.2)'
         }}>
           <span style={{
             background: 'linear-gradient(135deg, #00ccff, #0088ff)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
-            fontWeight: 600,
-            textShadow: '0 1px 2px rgba(0, 0, 0, 0.3)'
+            fontWeight: 600
           }}>
             🌊 欢迎，{user?.displayName || user?.username || '用户'}（{role}）
           </span>
         </Header>
-        <Content style={{ 
-          margin: '24px 16px', 
-          padding: '32px',
-          background: 'rgba(255, 255, 255, 0.95)',
-          backdropFilter: 'blur(10px)',
-          borderRadius: '20px',
-          border: '1px solid rgba(0, 200, 255, 0.2)',
-          boxShadow: 
-            '0 8px 40px rgba(0, 150, 255, 0.15), ' +
-            '0 4px 20px rgba(0, 100, 200, 0.1), ' +
-            'inset 0 1px 0 rgba(255, 255, 255, 0.8)',
-          minHeight: 'calc(100vh - 140px)',
-          position: 'relative',
+
+        <Content style={{
+          background: 'transparent',
+          padding: 0,
+          margin: 0,
+          height: 'calc(100vh - 64px)',
           overflow: 'hidden'
         }}>
-          <div style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            height: '3px',
-            background: 'linear-gradient(90deg, #00aaff, #00ccff, #0088ff)',
-            borderRadius: '20px 20px 0 0'
-          }} />
           <Outlet />
         </Content>
       </Layout>
-      
-      {/* AI浮窗聊天组件 */}
-      <AIFloatingChat 
-        visible={aiChatVisible} 
-        onClose={() => setAiChatVisible(false)} 
-      />
+
+      <AIFloatingChat visible={aiChatVisible} onClose={() => setAiChatVisible(false)} />
     </Layout>
   );
 };

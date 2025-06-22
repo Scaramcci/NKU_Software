@@ -1,6 +1,5 @@
-// src/pages/MainInfo/WaterInfo.jsx
 import React from 'react';
-import { Card, Progress, Typography, Row, Col } from 'antd';
+import { Progress, Typography } from 'antd';
 import './WaterInfo.css';
 
 const { Text } = Typography;
@@ -11,34 +10,31 @@ const parameters = [
   { name: '溶解氧 (mg/L)', value: 0.0, color: '#f44336' },
   { name: '浊度 (NTU)', value: 2.05, color: '#2196f3' },
   { name: 'pH', value: 8.37, color: '#8e24aa' },
-  { name: '水温 (°C)', value: 15, color: '#ff9800' },
+  { name: '水温 (°C)', value: 15, color: '#ff9800' }
 ];
 
 const WaterInfo = () => {
   return (
-    <Card
-      title={<Text style={{ color: '#fff', fontSize: 20, fontWeight: 'bold' }}>水文气象</Text>}
-      bordered={false}
-      className="water-info-card"
-      bodyStyle={{ background: 'linear-gradient(to right, #001f3f, #005f73)', borderRadius: 12, padding: 24 }}
-    >
-      <Row gutter={[16, 16]}>
+    <div className="water-info-card">
+      <div className="param-list">
         {parameters.map((param, index) => (
-          <Col span={24} key={index}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <Text style={{ color: '#fff', fontSize: 16 }}>{param.name}</Text>
-              <Text style={{ color: param.color, fontSize: 16, fontWeight: 'bold' }}>{param.value}</Text>
+          <div className="param-row" key={index}>
+            <div className="param-label">{param.name}</div>
+            <div className="param-bar">
+              <Progress
+                percent={Math.min((param.value / 50) * 100, 100)}
+                showInfo={false}
+                strokeColor={param.color}
+                strokeWidth={10}
+              />
             </div>
-            <Progress
-              percent={Math.min((param.value / 50) * 100, 100)}
-              showInfo={false}
-              strokeColor={param.color}
-              style={{ marginTop: 4 }}
-            />
-          </Col>
+            <div className="param-value" style={{ color: param.color }}>
+              {param.value.toFixed(2)}
+            </div>
+          </div>
         ))}
-      </Row>
-    </Card>
+      </div>
+    </div>
   );
 };
 
