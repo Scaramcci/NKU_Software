@@ -1,70 +1,82 @@
 .weather-alert-card {
-  background: linear-gradient(145deg, #0d1b2a, #1b2f43);
+  background: linear-gradient(135deg, #063f74, #0a2d50);
   border-radius: 16px;
-  padding: 24px;
-  color: #e0f7ff;
-  box-shadow: 0 4px 20px rgba(0, 255, 255, 0.1);
-  border: 1px solid rgba(0, 255, 255, 0.05);
+  color: #ffffff;
+  padding: 20px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: 16px;
+  overflow-y: auto;
 }
 
 .weather-alert-title {
   color: #00eaff;
-  text-align: center;
-  font-weight: bold;
-  margin-bottom: 16px;
-  text-shadow: 0 0 10px #00f0ff;
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 0;
 }
 
 .weather-status {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 16px;
-  margin-bottom: 20px;
 }
 
 .weather-icon-wrapper {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 12px;
+  background-color: rgba(255, 255, 255, 0.1);
   border-radius: 12px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .weather-icon {
-  font-size: 36px;
-  color: #00eaff;
+  font-size: 28px;
+  color: #00cfff;
 }
 
-.weather-details .weather-info {
-  display: block;
-  font-size: 16px;
-  margin-bottom: 4px;
+.weather-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 14px;
+  color: #ffffff;
+}
+
+.weather-info {
+  color: #ffffff;
+  font-size: 14px;
 }
 
 .ai-advice {
-  background-color: rgba(255, 255, 255, 0.05);
-  padding: 16px;
+  background-color: rgba(0, 255, 255, 0.06);
   border-radius: 12px;
-  margin-bottom: 20px;
+  padding: 12px 16px;
 }
 
 .ai-advice-header {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 12px;
-}
-
-.ai-icon {
-  font-size: 20px;
-  color: #00eaff;
+  margin-bottom: 8px;
 }
 
 .ai-title {
-  font-size: 18px;
   color: #00eaff;
-  font-weight: bold;
+  font-weight: 600;
 }
 
-.weather-warning-list .ant-alert {
-  border-radius: 8px;
-  font-size: 16px;
+.ai-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.weather-warning-list {
+  margin-top: 12px;
+  max-height: 200px;
+  overflow-y: auto;
 }

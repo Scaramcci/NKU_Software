@@ -1,14 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Row, Col, Card } from 'antd';
-import { isMobileDevice } from '../../utils/deviceDetection';
 import VideoSection from './VideoSection';
 import WaterInfo from './WaterInfo';
 import MapSection from './MapSection';
 import HistoryChart from './HistoryChart';
 import ControlPanel from './ControlPanel';
 import DeviceStatus from './DeviceStatus';
-import MainInfoMobile from './MainInfoMobile';
-import './index.css';
 
 const cardStyle = {
   borderRadius: 10,
@@ -25,62 +22,74 @@ const bodyStyle = {
 };
 
 const MainInfo = () => {
-  const [isMobile, setIsMobile] = useState(isMobileDevice());
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(isMobileDevice());
-    };
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  // 移动端使用专门的移动端组件
-  if (isMobile) {
-    return <MainInfoMobile />;
-  }
-
-  // 桌面端使用原有布局
   return (
-    <div className="main-info-container">
-      <Row gutter={[16, 16]} style={{ height: '100%' }}>
-        {/* 左侧列 */}
-        <Col xs={24} sm={24} md={12} lg={12} xl={12} style={{ height: '100%' }}>
-          <Row gutter={[16, 16]} style={{ height: '100%' }}>
-            {/* 视频区域 */}
-            <Col span={24} style={{ height: '60%' }}>
-              <VideoSection />
+    <div
+      style={{
+        height: '100vh',
+        padding: 12,
+        background: '#020d1f',
+        overflow: 'hidden'
+      }}
+    >
+      <Row gutter={[12, 12]} style={{ height: '100%' }}>
+        {/* 左侧：监控视频 + 控制面板 */}
+        <Col span={8} style={{ height: '100%' }}>
+          <Row gutter={[0, 6]} style={{ height: '100%' }}>
+            <Col span={24} style={{ height: '50%' }}>
+              <Card title="监控视频" headStyle={{ color: '#fff' }} style={cardStyle} bodyStyle={bodyStyle}>
+                <div style={{ height: '100%' }}>
+                  <VideoSection />
+                </div>
+              </Card>
             </Col>
-            {/* 设备状态 */}
+            <Col span={24} style={{ height: '48%' }}>
+              <Card title="附加功能" headStyle={{ color: '#fff' }} style={cardStyle} bodyStyle={bodyStyle}>
+                <div style={{ height: '100%' }}>
+                  <ControlPanel />
+                </div>
+              </Card>
+            </Col>
+          </Row>
+        </Col>
+
+        {/* 中间：水文气象 + 地图 */}
+        <Col span={8} style={{ height: '100%' }}>
+          <Row gutter={[0, 6]} style={{ height: '100%' }}>
             <Col span={24} style={{ height: '40%' }}>
-              <DeviceStatus />
+              <Card title="水文气象" headStyle={{ color: '#fff' }} style={cardStyle} bodyStyle={bodyStyle}>
+                <div style={{ height: '100%' }}>
+                  <WaterInfo />
+                </div>
+              </Card>
+            </Col>
+            <Col span={24} style={{ height: '60%' }}>
+              <Card title="历史记录" headStyle={{ color: '#fff' }} style={cardStyle} bodyStyle={bodyStyle}>
+                <div style={{ height: '100%' }}>
+                  <HistoryChart  />
+                </div>
+              </Card>
             </Col>
           </Row>
         </Col>
-        
-        {/* 右侧列 */}
-        <Col xs={24} sm={24} md={12} lg={12} xl={12} style={{ height: '100%' }}>
-          <Row gutter={[16, 16]} style={{ height: '100%' }}>
-            {/* 水质信息 */}
-            <Col span={24} style={{ height: '50%' }}>
-              <WaterInfo />
+
+        {/* 右侧：历史记录 + 设备状态 */}
+        <Col span={8} style={{ height: '100%' }}>
+          <Row gutter={[0, 6]} style={{ height: '100%' }}>
+            <Col span={24} style={{ height: '65%' }}>
+              <Card title="海洋牧场定位展示" headStyle={{ color: '#fff' }} style={cardStyle} bodyStyle={bodyStyle}>
+                <div style={{ height: '100%' }}>
+                  <MapSection />
+                </div>
+              </Card>
             </Col>
-            {/* 历史图表 */}
-            <Col span={24} style={{ height: '50%' }}>
-              <HistoryChart />
+            <Col span={24} style={{ height: '35%' }}>
+              <Card title="设备状态概览" headStyle={{ color: '#fff' }} style={cardStyle} bodyStyle={bodyStyle}>
+                <div style={{ height: '100%' }}>
+                  <DeviceStatus />
+                </div>
+              </Card>
             </Col>
           </Row>
-        </Col>
-      </Row>
-      
-      {/* 底部区域 */}
-      <Row gutter={[16, 16]} style={{ marginTop: '16px' }}>
-        <Col xs={24} sm={24} md={12} lg={12} xl={12}>
-          <MapSection />
-        </Col>
-        <Col xs={24} sm={24} md={12} lg={12} xl={12}>
-          <ControlPanel />
         </Col>
       </Row>
     </div>
