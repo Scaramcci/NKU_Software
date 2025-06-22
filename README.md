@@ -35,12 +35,14 @@
 ## 技术栈
 
 ### 前端
+
 - React.js - 前端框架
 - Ant Design - UI组件库
 - Redux - 状态管理
 - ECharts - 数据可视化
 
 ### 后端
+
 - Spring Boot - 应用框架
 - Spring Cloud - 微服务框架
 - Spring Security + JWT - 安全框架
@@ -53,6 +55,7 @@
 ## 快速开始
 
 ### 前端启动
+
 ```bash
 cd frontend
 npm install
@@ -60,6 +63,7 @@ npm start
 ```
 
 ### 后端启动
+
 ```bash
 1. 启动注册中心
 cd registry
@@ -119,4 +123,4 @@ Authorization: Bearer xxx.yyy.zzz
 
 ## 开发团队
 
-南开大学软件工程课程团队项目 终期 再试一下
+南开大学软件工程课程团队项目 终期 try_for_homework4_zky
