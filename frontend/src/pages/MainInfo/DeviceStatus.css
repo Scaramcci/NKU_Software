@@ -1,21 +1,97 @@
-/* src/pages/MainInfo/DeviceStatus.css */
 .device-status-card {
-  background: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364);
+  background: linear-gradient(135deg, #0c1b3a, #132b53);
+  padding: 4px 6px;
+  border-radius: 6px;
   color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.5);
-}
-
-.device-item {
+  font-size: 8px;
+  height: 100%;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 8px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  flex-direction: column;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
-.device-name {
-  font-weight: 500;
-  font-size: 16px;
-  color: #fff;
+.device-status-title {
+  font-size: 9px;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.device-tab-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 6px;
+}
+
+.device-tab {
+  font-size: 7px;
+  color: #ffffff;
+  padding: 2px 6px;
+  background-color: transparent;
+  border-radius: 3px;
+}
+
+.device-tab.active {
+  background-color: #00aaff;
+  font-weight: bold;
+}
+
+.device-tab-badge {
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  font-size: 7px;
+  padding: 0px 5px;
+  margin-left: 3px;
+  line-height: 1;
+}
+
+.device-status-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding-bottom: 4px;
+  flex: 1;
+}
+
+.status-line {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  margin-bottom: 2px;
+}
+
+.status-subblock {
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.status-pair {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.label {
+  font-size: 7px;
+  color: #ffffff;
+  min-width: 35px;
+}
+
+.value {
+  font-size: 7px;
+  font-weight: bold;
+  color: #00eaff;
+  word-break: break-word;
+}
+
+.dot {
+  width: 3px;
+  height: 3px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  display: inline-block;
 }

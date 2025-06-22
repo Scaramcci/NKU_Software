@@ -1,54 +1,55 @@
-// src/pages/MainInfo/DeviceStatus.jsx
 import React from 'react';
-import { Card, Tag, Space, Typography } from 'antd';
-import { CheckCircleOutlined, ExclamationCircleOutlined, CloseCircleOutlined } from '@ant-design/icons';
 import './DeviceStatus.css';
-
-const { Text } = Typography;
-
-const devices = [
-  { name: '摄像头 A', status: '正常' },
-  { name: '传感器 B', status: '离线' },
-  { name: '推进器 C', status: '正常' },
-  { name: '灯光系统', status: '维护中' },
-];
 
 const DeviceStatus = () => {
   return (
-    <Card
-      title={<Text style={{ color: '#fff', fontSize: 18 }}>设备状态概览</Text>}
-      bordered={false}
-      className="device-status-card"
-      bodyStyle={{ padding: 16 }}
-    >
-      <Space direction="vertical" style={{ width: '100%' }} size="middle">
-        {devices.map((item, index) => (
-          <div key={index} className="device-item">
-            <Text className="device-name">{item.name}</Text>
-            <Tag icon={getIcon(item.status)} color={getColor(item.status)} style={{ fontSize: 14, padding: '2px 8px' }}>{item.status}</Tag>
+    <div className="device-status-card">
+      <div className="device-status-title">设备状态</div>
+
+      <div className="device-tab-row">
+        <div className="device-tab active">主控</div>
+        <div className="device-tab">时间校准</div>
+        <div className="device-tab">通道</div>
+        <div className="device-tab">
+          告警 <span className="device-tab-badge">2</span>
+        </div>
+      </div>
+
+      <div className="device-status-info">
+        <div className="status-line">
+          <span className="dot" />
+          <span className="label">设备ID：</span>
+          <span className="value">8D19C331-4F08-47A1</span>
+        </div>
+
+        <div className="status-line">
+          <span className="dot" />
+          <span className="label">主控状态：</span>
+        </div>
+        <div className="status-subblock">
+          <div className="status-pair">
+            <span className="label">版本：</span>
+            <span className="value">V0.1.1</span>
           </div>
-        ))}
-      </Space>
-    </Card>
+          <div className="status-pair">
+            <span className="label">温度：</span>
+            <span className="value" style={{ color: '#00ff66' }}>39.64℃</span>
+          </div>
+        </div>
+
+        <div className="status-line">
+          <span className="dot" />
+          <span className="label">次控状态：</span>
+        </div>
+        <div className="status-subblock">
+          <div className="status-pair">
+            <span className="label">连接：</span>
+            <span className="value" style={{ color: 'red' }}>断开</span>
+          </div>
+        </div>
+      </div>
+    </div>
   );
-};
-
-const getColor = (status) => {
-  switch (status) {
-    case '正常': return 'green';
-    case '离线': return 'error';
-    case '维护中': return 'warning';
-    default: return 'default';
-  }
-};
-
-const getIcon = (status) => {
-  switch (status) {
-    case '正常': return <CheckCircleOutlined />;
-    case '离线': return <CloseCircleOutlined />;
-    case '维护中': return <ExclamationCircleOutlined />;
-    default: return null;
-  }
 };
 
 export default DeviceStatus;

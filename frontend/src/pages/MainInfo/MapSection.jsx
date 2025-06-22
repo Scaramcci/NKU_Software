@@ -46,7 +46,6 @@ const MapSection = ({ onSelectFarm }) => {
 
   return (
     <Card className="map-card">
-      <div className="map-title">海洋牧场定位展示</div>
       <div id="map-container" className="map-container">
         {/* 地图容器 */}
       </div>

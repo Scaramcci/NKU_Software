@@ -1,17 +1,64 @@
-/* src/pages/MainInfo/HistoryChart.css */
-
 .history-chart-card {
+  padding: 12px;
   background: linear-gradient(135deg, #0d1f33, #193b5a);
-  border-radius: 20px;
-  padding: 24px;
-  box-shadow: 0 0 25px rgba(0, 255, 255, 0.25);
-  border: 1px solid rgba(0, 255, 255, 0.2);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.12);
+  border: 1px solid rgba(0, 255, 255, 0.1);
   color: #ffffff;
-  margin-top: 24px;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .history-chart-card canvas {
-  background: rgba(0, 16, 32, 0.6);
-  border-radius: 12px;
-  padding: 10px;
+  background: rgba(0, 16, 32, 0.4);
+  border-radius: 8px;
+  width: 100% !important;
+  height: 180px !important;
+}
+
+.chart-toolbar {
+  margin-bottom: 12px;
+}
+
+.history-chart-card .ant-btn {
+  background-color: #031d38;
+  color: #00f0ff;
+  border: 1px solid #00c0ff;
+  border-radius: 6px;
+}
+
+.history-chart-card .ant-select-selector {
+  background-color: #031d38 !important;
+  color: #00f0ff !important;
+  border-radius: 6px !important;
+  border: 1px solid #00c0ff !important;
+}
+.chart-label {
+  color: #ffffff !important;
+  font-weight: bold;
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+/* 解决 RangePicker 输入框字体颜色为黑色的问题 */
+.history-chart-card .ant-picker-input > input {
+  color: #ffffff !important; /* 白色字体 */
+}
+
+/* 调整日历弹出样式的背景和字体 */
+.history-chart-card .ant-picker-dropdown {
+  background-color: #031d38;
+  color: #ffffff;
+}
+
+.history-chart-card .ant-picker-panel,
+.history-chart-card .ant-picker-date-panel {
+  background-color: #031d38;
+  color: #ffffff;
+}
+
+.history-chart-card .ant-picker-cell-inner {
+  color: #ffffff;
 }

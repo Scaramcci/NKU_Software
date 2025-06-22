@@ -1,0 +1,45 @@
+.main-info-container {
+  padding: 12px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-sizing: border-box;
+  overflow: auto;
+}
+
+.top-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 12px;
+  height: 45%;
+}
+
+.column {
+  flex: 1;
+  background: linear-gradient(135deg, #0d1f33, #193b5a);
+  border-radius: 12px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.15);
+  overflow: hidden;
+}
+
+.bottom-row {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow-y: auto;
+}
+
+.wide-module {
+  height: 150px;
+  background: linear-gradient(135deg, #0d1f33, #193b5a);
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.15);
+}

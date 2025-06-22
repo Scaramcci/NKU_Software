@@ -1,6 +1,6 @@
 // src/pages/MainInfo/VideoSection.jsx
 import React, { useState } from 'react';
-import { Card, Typography, Button } from 'antd';
+import { Typography, Button } from 'antd';
 import './VideoSection.css';
 
 const { Text } = Typography;
@@ -20,12 +20,8 @@ const VideoSection = () => {
   };
 
   return (
-    <Card
-      title={<Text className="video-title">监控视频</Text>}
-      bordered={false}
-      className="video-section-card"
-      bodyStyle={{ padding: 24 }}
-    >
+    <div className="video-section-card">
+      <Text className="video-title">监控视频</Text>
       <div className="video-selector">
         {videoList.map((video, index) => (
           <Button
@@ -50,7 +46,7 @@ const VideoSection = () => {
           您的浏览器不支持视频标签。
         </video>
       </div>
-    </Card>
+    </div>
   );
 };
 
