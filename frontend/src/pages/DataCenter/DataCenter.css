@@ -1,29 +1,41 @@
 /* src/pages/DataCenter/DataCenter.css */
 
 .data-center-wrapper {
-  padding: 16px;
-  background-color: #020d1f;
-  min-height: 100vh;
-  color: #ffffff;
+  padding: 32px 0 32px 0;
+  background: linear-gradient(135deg, #061e3c 60%, #0e2a4a 100%);
+  min-height: 100dvh;
+  color: #fff;
+  box-sizing: border-box;
+  overflow-y: auto;
 }
 
 .data-center-title {
-  font-size: 24px;
+  font-size: 32px;
   font-weight: bold;
-  color: #00ffff;
-  margin-bottom: 20px;
+  margin-bottom: 36px;
   text-align: center;
-  letter-spacing: 1px;
+  letter-spacing: 4px;
+  color: #fff;
+  text-shadow: 0 4px 24px #000a, 0 1px 0 #00ffff;
 }
 
 .data-center-row {
-  margin-top: 8px;
+  max-width: 1300px;
+  margin: 0 auto;
+  gap: 24px 0;
 }
 
 .data-panel {
-  background-color: #061e3c !important;
-  border-radius: 12px !important;
+  background: rgba(6, 30, 60, 0.92) !important;
+  border-radius: 18px !important;
   color: #ffffff;
+  box-shadow: 0 4px 32px 0 #0006;
+  margin-bottom: 24px;
+}
+
+.data-panel,
+.data-panel * {
+  color: #fff !important;
 }
 
 .data-panel .ant-card-head {
@@ -33,6 +45,8 @@
 
 .data-panel .ant-card-head-title {
   color: #00ffff;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .data-center-btn {
@@ -49,4 +63,14 @@
 .data-center-btn:hover {
   background-color: #1890ff;
   color: #ffffff;
+}
+
+/* 滚动条美化 */
+.data-center-wrapper::-webkit-scrollbar {
+  width: 8px;
+}
+
+.data-center-wrapper::-webkit-scrollbar-thumb {
+  background: #0e2a4a;
+  border-radius: 4px;
 }

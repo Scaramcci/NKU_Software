@@ -1,10 +1,12 @@
 import React from 'react';
+import { Card } from 'antd';
 
 const RadarChart = () => (
-  <div className="data-panel">
-    <div className="panel-title">数据类型雷达图</div>
-    <div className="placeholder">雷达图区域</div>
-  </div>
+  <Card title="多维指标雷达图" size="small">
+    <div style={{ height: 180, background: '#f6ffed', textAlign: 'center', lineHeight: '180px' }}>
+      雷达图占位
+    </div>
+  </Card>
 );
 
 export default RadarChart;

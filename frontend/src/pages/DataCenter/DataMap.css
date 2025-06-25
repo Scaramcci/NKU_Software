@@ -4,7 +4,7 @@
 }
 .data-map-main {
   height: 220px;
-  background: #002244;
+  background: hsl(210, 54%, 63%);
   border-radius: 8px;
   margin-bottom: 16px;
   color: #00ffff;
@@ -13,9 +13,16 @@
   justify-content: center;
 }
 .data-map-struct {
-  height: 80px;
+  height: 90px;
   color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.map-info-horizontal {
+  display: flex;
+  gap: 24px;
+  margin: 12px 0 8px 0;
+  color: #fff;
+  font-size: 15px;
 }
