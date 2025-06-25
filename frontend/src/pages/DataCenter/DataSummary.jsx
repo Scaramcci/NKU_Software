@@ -1,20 +1,21 @@
 // src/pages/DataCenter/components/DataSummary.jsx
 import React from 'react';
-import { Card, Statistic } from 'antd';
-import { DatabaseOutlined } from '@ant-design/icons';
-
-const DataSummary = () => {
-  return (
-    <Card className="data-panel" title={<span style={{color:'#fff'}}>数据总量</span>} bordered={false}>
-      <Statistic 
-        title="进程总量" 
-        value={999} 
-        prefix={<DatabaseOutlined />} 
-        valueStyle={{ color: '#00ffff' }} 
-      />
-      <div style={{marginTop: 16, color:'#fff'}}>磁盘：已使用 1000T / 剩余 1500T</div>
-    </Card>
-  );
-};
-
+import { Card, Statistic, Row, Col } from 'antd';
+const summaryData = [
+  { title: '传感器数量', value: 128 },
+  { title: '数据库数量', value: 6 },
+  { title: '数据总量(GB)', value: 1024 },
+  { title: '在线设备', value: 120 },
+];
+const DataSummary = () => (
+  <Card title="数据总览" size="small" style={{ marginBottom: 16 }}>
+    <Row gutter={16}>
+      {summaryData.map((item, idx) => (
+        <Col span={12} key={idx}>
+          <Statistic title={item.title} value={item.value} />
+        </Col>
+      ))}
+    </Row>
+  </Card>
+);
 export default DataSummary;

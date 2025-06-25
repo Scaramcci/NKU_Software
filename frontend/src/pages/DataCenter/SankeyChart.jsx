@@ -1,10 +1,12 @@
 import React from 'react';
+import { Card } from 'antd';
 
 const SankeyChart = () => (
-  <div className="data-panel">
-    <div className="panel-title">结构化数据桑基图</div>
-    <div className="placeholder">桑基图区域</div>
-  </div>
+  <Card title="数据流桑基图" size="small" style={{ marginBottom: 16 }}>
+    <div style={{ height: 120, background: '#fff0f6', textAlign: 'center', lineHeight: '120px' }}>
+      桑基图占位
+    </div>
+  </Card>
 );
 
 export default SankeyChart;
