@@ -15,7 +15,25 @@ const FishTypePieChart = () => {
     },
     tooltip: {
       trigger: 'item',
-      formatter: '{b}: {c} 尾 ({d}%)',
+      alwaysShowContent: true, // 强制显示tooltip
+      triggerOn: 'mousemove', // 确保鼠标移动时触发
+      // 增强tooltip格式化器，显示更详细信息
+      formatter: function(params) {
+        // 确保params和必要属性存在
+        if (!params || !params.data) return '';
+        
+        // 计算总和用于百分比计算
+        const total = option.series[0].data.reduce((sum, item) => sum + item.value, 0);
+        const percent = total > 0 ? (params.data.value / total * 100) : 0;
+        
+        return `
+          <div style='padding: 10px; background: rgba(0,0,0,0.7); border-radius: 4px;'>
+            <div style='font-weight: bold; margin-bottom: 5px; color: #00eaff;'>${params.data.name}</div>
+            <div style='color: #fff;'>数量: ${params.data.value} 尾</div>
+            <div style='color: #fff;'>占比: ${percent.toFixed(2)}%</div>
+          </div>
+        `;
+      },
       textStyle: {
         color: '#ffffff',  // ✅ 悬浮提示改为白色
         fontSize: 14

@@ -6,6 +6,24 @@ const FishTrendChart = () => {
     backgroundColor: 'transparent',
     tooltip: {
       trigger: 'axis',
+      axisPointer: {
+        type: 'shadow' // 显示阴影指示器
+      },
+      backgroundColor: 'rgba(0, 0, 0, 0.7)', // 半透明黑色背景
+      borderColor: '#00eaff', // 边框蓝色
+      borderWidth: 1,
+      padding: 10,
+      formatter: function(params) {
+        // params是一个数组，包含当前点的所有数据
+        if (!params || params.length === 0) return '';
+        
+        const data = params[0];
+        return `
+          <div style='text-align: center; margin-bottom: 5px;'>${data.name}</div>
+          <div style='color: #00eaff;'>鱼群数量: ${data.value} 尾</div>
+          <div>较前日变化: ${data.value - (params[0].dataIndex > 0 ? option.series[0].data[params[0].dataIndex - 1] : data.value)} 尾</div>
+        `;
+      },
       textStyle: {
         color: '#ffffff', // ✅ 悬浮提示文字为白色
         fontSize: 14
