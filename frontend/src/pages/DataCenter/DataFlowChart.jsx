@@ -1,10 +1,88 @@
-import React from 'react';
-import { Card, Input, Button } from 'antd';
+import React, { useRef } from 'react';
+import { Card, Input, Button, Space, message } from 'antd';
+import { DownloadOutlined } from '@ant-design/icons';
+import html2canvas from 'html2canvas';
+import Papa from 'papaparse';
+import dayjs from 'dayjs';
 import './DataFlowChart.css'; // 新增CSS文件用于自定义样式
 
-const DataFlowChart = () => (
-  <Card title="" size="small" style={{ marginBottom: 16, backgroundColor: '#0f172a' }}>
-    <div className="database-stats-container">
+const DataFlowChart = () => {
+  const chartRef = useRef(null);
+
+  // 数据库统计数据
+  const statsData = [
+    { label: '数据库', value: 'MySQL，HBase' },
+    { label: '查询次数', value: '567890' },
+    { label: '成功次数', value: '567890' },
+    { label: '查询时间', value: '0.1s' }
+  ];
+
+  // 下载图表为图片
+  const downloadChart = async () => {
+    try {
+      if (chartRef.current) {
+        const canvas = await html2canvas(chartRef.current, {
+          backgroundColor: '#0f172a',
+          scale: 2,
+          useCORS: true
+        });
+        
+        const link = document.createElement('a');
+        link.download = `数据库统计_${dayjs().format('YYYY-MM-DD_HH-mm-ss')}.png`;
+        link.href = canvas.toDataURL();
+        link.click();
+        
+        message.success('图表下载成功');
+      }
+    } catch (error) {
+      console.error('下载图表失败:', error);
+      message.error('下载图表失败');
+    }
+  };
+
+  // 下载数据为CSV
+  const downloadData = () => {
+    try {
+      const csv = Papa.unparse(statsData);
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = `数据库统计数据_${dayjs().format('YYYY-MM-DD_HH-mm-ss')}.csv`;
+      link.click();
+      
+      message.success('数据下载成功');
+    } catch (error) {
+      console.error('下载数据失败:', error);
+      message.error('下载数据失败');
+    }
+  };
+
+  return (
+  <Card 
+    title="数据库交互统计" 
+    size="small" 
+    style={{ marginBottom: 16, backgroundColor: '#0f172a' }}
+    extra={
+      <Space>
+        <Button 
+          type="primary" 
+          icon={<DownloadOutlined />} 
+          onClick={downloadChart}
+          size="small"
+        >
+          下载图表
+        </Button>
+        <Button 
+          icon={<DownloadOutlined />} 
+          onClick={downloadData}
+          size="small"
+        >
+          下载数据
+        </Button>
+      </Space>
+    }
+  >
+    <div ref={chartRef} className="database-stats-container">
       {/* 标题 */}
       <h2 className="stats-title">数据库交互统计</h2>
 
@@ -57,6 +135,7 @@ const DataFlowChart = () => (
       </Button>
     </div>
   </Card>
-);
+  );
+};
 
 export default DataFlowChart;

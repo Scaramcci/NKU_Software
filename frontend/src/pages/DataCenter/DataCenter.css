@@ -49,6 +49,121 @@
   font-weight: bold;
 }
 
+.panel-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  color: #00ffff;
+  text-align: center;
+}
+
+.placeholder {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(14, 42, 74, 0.5);
+  border-radius: 8px;
+  color: #888;
+  font-size: 14px;
+}
+
+.data-center-wrapper .ant-card {
+  background: rgba(6, 30, 60, 0.92) !important;
+  border: 1px solid #0e2a4a !important;
+  border-radius: 18px !important;
+}
+
+.data-center-wrapper .ant-card-body {
+  color: #fff !important;
+}
+
+/* 标签页样式 */
+.data-center-tabs {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.data-center-tabs .ant-tabs-nav {
+  background: rgba(6, 30, 60, 0.8);
+  border-radius: 12px 12px 0 0;
+  margin-bottom: 0;
+  padding: 0 20px;
+}
+
+.data-center-tabs .ant-tabs-nav::before {
+  border-bottom: 1px solid #0e2a4a;
+}
+
+.data-center-tabs .ant-tabs-tab {
+  color: #94a3b8;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 16px 24px;
+  margin: 0 8px;
+  border-radius: 8px 8px 0 0;
+  transition: all 0.3s ease;
+}
+
+.data-center-tabs .ant-tabs-tab:hover {
+  color: #00ffff;
+  background: rgba(14, 42, 74, 0.6);
+}
+
+.data-center-tabs .ant-tabs-tab-active {
+  color: #00ffff !important;
+  background: rgba(14, 42, 74, 0.8);
+  border-bottom: 2px solid #00ffff;
+}
+
+.data-center-tabs .ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: #00ffff;
+  text-shadow: 0 0 8px #00ffff;
+}
+
+.data-center-tabs .ant-tabs-ink-bar {
+  background: #00ffff;
+  height: 3px;
+  border-radius: 2px;
+}
+
+.data-center-tabs .ant-tabs-content-holder {
+  background: rgba(6, 30, 60, 0.3);
+  border-radius: 0 0 12px 12px;
+  padding: 20px;
+}
+
+.data-center-tabs .ant-tabs-tabpane {
+  color: #fff;
+}
+
+/* 标签页图标样式 */
+.data-center-tabs .anticon {
+  margin-right: 8px;
+  font-size: 16px;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .data-center-tabs {
+    margin: 0 10px;
+  }
+  
+  .data-center-tabs .ant-tabs-nav {
+    padding: 0 10px;
+  }
+  
+  .data-center-tabs .ant-tabs-tab {
+    font-size: 14px;
+    padding: 12px 16px;
+    margin: 0 4px;
+  }
+  
+  .data-center-tabs .ant-tabs-content-holder {
+    padding: 10px;
+  }
+}
+
 .data-center-btn {
   padding: 6px 16px;
   background-color: #0050b3;

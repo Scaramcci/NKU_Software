@@ -1,0 +1,255 @@
+.data-management {
+  padding: 20px;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  min-height: 100vh;
+}
+
+.data-management-card {
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid #334155;
+  border-radius: 8px;
+}
+
+.data-management-card .ant-card-head {
+  background: rgba(30, 41, 59, 0.8);
+  border-bottom: 1px solid #334155;
+}
+
+.data-management-card .ant-card-head-title {
+  color: #f1f5f9;
+  font-weight: 600;
+}
+
+.data-management-card .ant-card-body {
+  background: rgba(15, 23, 42, 0.6);
+}
+
+.statistics-card {
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid #334155;
+  border-radius: 8px;
+}
+
+.statistics-card .ant-card-head {
+  background: rgba(30, 41, 59, 0.8);
+  border-bottom: 1px solid #334155;
+}
+
+.statistics-card .ant-card-head-title {
+  color: #f1f5f9;
+  font-weight: 600;
+}
+
+.statistics-card .ant-card-body {
+  background: rgba(15, 23, 42, 0.6);
+}
+
+.statistics-card .ant-card-small {
+  background: rgba(30, 41, 59, 0.6);
+  border: 1px solid #475569;
+  border-radius: 6px;
+}
+
+.statistics-card .ant-card-small .ant-card-body {
+  background: transparent;
+}
+
+.statistics-card .ant-statistic-title {
+  color: #cbd5e1;
+  font-size: 14px;
+}
+
+.statistics-card .ant-statistic-content {
+  color: #f1f5f9;
+}
+
+.anomalies-card {
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid #334155;
+  border-radius: 8px;
+}
+
+.anomalies-card .ant-card-head {
+  background: rgba(30, 41, 59, 0.8);
+  border-bottom: 1px solid #334155;
+}
+
+.anomalies-card .ant-card-head-title {
+  color: #f1f5f9;
+  font-weight: 600;
+}
+
+.anomalies-card .ant-card-body {
+  background: rgba(15, 23, 42, 0.6);
+}
+
+.anomalies-card .ant-table {
+  background: transparent;
+}
+
+.anomalies-card .ant-table-thead > tr > th {
+  background: rgba(30, 41, 59, 0.8);
+  color: #f1f5f9;
+  border-bottom: 1px solid #334155;
+}
+
+.anomalies-card .ant-table-tbody > tr > td {
+  background: rgba(15, 23, 42, 0.4);
+  color: #cbd5e1;
+  border-bottom: 1px solid #334155;
+}
+
+.anomalies-card .ant-table-tbody > tr:hover > td {
+  background: rgba(30, 41, 59, 0.6) !important;
+}
+
+.chart-container {
+  background: rgba(15, 23, 42, 0.8);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+/* 按钮样式 */
+.data-management .ant-btn {
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.data-management .ant-btn-primary {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  border: none;
+  box-shadow: 0 2px 4px rgba(59, 130, 246, 0.3);
+}
+
+.data-management .ant-btn-primary:hover {
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(59, 130, 246, 0.4);
+}
+
+.data-management .ant-btn:not(.ant-btn-primary) {
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid #475569;
+  color: #f1f5f9;
+}
+
+.data-management .ant-btn:not(.ant-btn-primary):hover {
+  background: rgba(51, 65, 85, 0.8);
+  border-color: #64748b;
+  color: #f1f5f9;
+}
+
+/* 选择器样式 */
+.data-management .ant-select {
+  border-radius: 6px;
+}
+
+.data-management .ant-select-selector {
+  background: rgba(30, 41, 59, 0.8) !important;
+  border: 1px solid #475569 !important;
+  color: #f1f5f9 !important;
+}
+
+.data-management .ant-select-arrow {
+  color: #cbd5e1;
+}
+
+/* 日期选择器样式 */
+.data-management .ant-picker {
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid #475569;
+  border-radius: 6px;
+}
+
+.data-management .ant-picker input {
+  color: #f1f5f9;
+}
+
+.data-management .ant-picker-suffix {
+  color: #cbd5e1;
+}
+
+/* 上传组件样式 */
+.data-management .ant-upload {
+  background: transparent;
+}
+
+/* 模态框样式 */
+.ant-modal-content {
+  background: rgba(15, 23, 42, 0.95);
+  border: 1px solid #334155;
+}
+
+.ant-modal-header {
+  background: rgba(30, 41, 59, 0.8);
+  border-bottom: 1px solid #334155;
+}
+
+.ant-modal-title {
+  color: #f1f5f9;
+}
+
+.ant-modal-body {
+  background: rgba(15, 23, 42, 0.6);
+  color: #cbd5e1;
+}
+
+.ant-modal-footer {
+  background: rgba(30, 41, 59, 0.8);
+  border-top: 1px solid #334155;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .data-management {
+    padding: 10px;
+  }
+  
+  .chart-container {
+    padding: 8px;
+  }
+  
+  .data-management .ant-space {
+    flex-wrap: wrap;
+  }
+}
+
+/* 加载动画 */
+.data-management .ant-spin-container {
+  background: transparent;
+}
+
+.data-management .ant-spin-dot {
+  color: #3b82f6;
+}
+
+/* 统计卡片动画效果 */
+.statistics-card .ant-card-small {
+  transition: all 0.3s ease;
+}
+
+.statistics-card .ant-card-small:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  border-color: #64748b;
+}
+
+/* 表格滚动条样式 */
+.anomalies-card .ant-table-body::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.anomalies-card .ant-table-body::-webkit-scrollbar-track {
+  background: rgba(30, 41, 59, 0.3);
+  border-radius: 3px;
+}
+
+.anomalies-card .ant-table-body::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.6);
+  border-radius: 3px;
+}
+
+.anomalies-card .ant-table-body::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.8);
+}

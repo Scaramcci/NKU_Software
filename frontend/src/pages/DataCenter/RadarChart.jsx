@@ -1,7 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { Card } from 'antd';
+import React, { useState, useEffect, useRef } from 'react';
+import { Card, Button, Space, message } from 'antd';
+import { DownloadOutlined } from '@ant-design/icons';
 import { RadarChart, Radar, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer, Legend, Tooltip } from 'recharts';
 import Papa from 'papaparse';
+import html2canvas from 'html2canvas';
+import dayjs from 'dayjs';
 
 // 水质指标配置（名称、单位、最大值、归一化后最大值）
 const INDICATORS = [
@@ -59,9 +62,58 @@ const formatTooltip = ({ active, payload }) => {
 };
 
 const RadarChartComponent = () => {
-  const [radarData, setRadarData] = useState([]);
+  const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const chartRef = useRef(null);
   const [rawData, setRawData] = useState([]); // 存储原始数据用于tooltip显示
+  const [radarData, setRadarData] = useState([]); // 存储雷达图数据
+
+  // 下载图表为图片
+  const downloadChart = async () => {
+    try {
+      if (chartRef.current) {
+        const canvas = await html2canvas(chartRef.current, {
+          backgroundColor: '#061e3c',
+          scale: 2,
+          useCORS: true
+        });
+        
+        const link = document.createElement('a');
+        link.download = `水质雷达图_${dayjs().format('YYYY-MM-DD_HH-mm-ss')}.png`;
+        link.href = canvas.toDataURL();
+        link.click();
+        
+        message.success('图表下载成功');
+      }
+    } catch (error) {
+      console.error('下载图表失败:', error);
+      message.error('下载图表失败');
+    }
+  };
+
+  // 下载数据为CSV
+  const downloadData = () => {
+    try {
+      const csvData = rawData.map(item => ({
+        指标: item.subject,
+        实际值: item.A,
+        最大值: item.fullMark,
+        归一化值: item.normalizedA
+      }));
+      
+      const csv = Papa.unparse(csvData);
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = `水质数据_${dayjs().format('YYYY-MM-DD_HH-mm-ss')}.csv`;
+      link.click();
+      
+      message.success('数据下载成功');
+    } catch (error) {
+      console.error('下载数据失败:', error);
+      message.error('下载数据失败');
+    }
+  };
 
   // 加载并解析CSV数据
   useEffect(() => {
@@ -116,8 +168,30 @@ const RadarChartComponent = () => {
   }
 
   return (
-    <Card title="多维指标雷达图" size="small">
-      <div style={{ height: 400 }}>
+    <Card 
+      title="多维指标雷达图" 
+      size="small"
+      extra={
+        <Space>
+          <Button 
+            type="primary" 
+            icon={<DownloadOutlined />} 
+            onClick={downloadChart}
+            size="small"
+          >
+            下载图表
+          </Button>
+          <Button 
+            icon={<DownloadOutlined />} 
+            onClick={downloadData}
+            size="small"
+          >
+            下载数据
+          </Button>
+        </Space>
+      }
+    >
+      <div ref={chartRef} style={{ height: 400 }}>
         <ResponsiveContainer width="100%" height="100%">
           <RadarChart cx="50%" cy="50%" outerRadius="80%" data={radarData}>
             <PolarGrid stroke="#e8e8e8" />
